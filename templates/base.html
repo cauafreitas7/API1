@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        nav a {
+            color: #blue;
+            font-size: 1em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .book {
+            padding: 0px;
+            margin: 5px;
+            background-color: #f7f4f4;
+        }
+
+        .review {
+                margin-left: 50px;
+                font-size: 20px;
+        }
+        ul { list-style-type: none; padding: 0; }
+        .menu { font-weight: bold; margin-top: 15px; }
+        .submenu { margin-left: 20px; }
+        .submenu a { text-decoration: none; color: #333; }
+        .submenu a:hover { text-decoration: underline; }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home') }}" target="_blank">Home</a>
+        <a href="{{ url_for('index2') }}" target="_blank">BI</a>
+        <a href="{{ url_for('index3') }}" target="_blank">Mapa Legenda</a>
+
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

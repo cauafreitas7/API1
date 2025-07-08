@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} Tabela Menu {% endblock %}
+
+{% block content %}
+    <h2>Tabela Menu</h2>
+    <ul>
+        {% for menu, submenus in menus.items() %}
+            <li class="menu">{{ menu }}
+                {% if submenus %}
+                    <ul>
+                        {% for submenu in submenus %}
+                            <li class="submenu"><a href="#">{{ submenu }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

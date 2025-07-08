@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>{% block title %} Tabela Menu {% endblock %}</h3>
+    {% for book in menus %}
+        <div class='book'>
+            <h4>#{{ book[0] }} - {{ book[1] }} - Ordem {{ book[2] }}</h4>
+        </div>
+    {% endfor %}
+{% endblock %}
