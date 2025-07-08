@@ -9,8 +9,12 @@
             <li class="menu">{{ menu }}
                 {% if submenus %}
                     <ul>
-                        {% for submenu in submenus %}
-                            <li class="submenu"><a href="#">{{ submenu }}</a></li>
+                        {% for submenu, rota in submenus %}
+                            {% if rota != '#' %}
+                                <li class="submenu"><a href="{{ url_for(rota) }}">{{ submenu }}</a></li>
+                            {% else %}
+                                <li class="submenu">{{ submenu }} (em construção)</li>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 {% endif %}
