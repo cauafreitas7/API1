@@ -1,24 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>BI Completo</title>
-    <style>
-        body { font-family: Arial; margin: 20px; background: #f8f9fa; }
-        .grafico { margin-bottom: 40px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
-        h2 { color: #333; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-        img { max-width: 100%; height: auto; }
-    </style>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <!-- Importa os scripts do Bokeh para o HTML -->
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.3.min.js"></script>
+    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.3.min.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>📊 Painel de Indicadores</h1>
+    <h1>Dashboard Interativo com Bokeh</h1>
 
-    {% for titulo, img in graficos %}
-        <div class="grafico">
-            <h2>{{ titulo }}</h2>
-            <img src="data:image/png;base64,{{ img }}" alt="{{ titulo }}">
-        </div>
+    {% for titulo, script, div in graficos %}
+        <h3>{{ titulo }}</h3>
+        {{ script | safe }}
+        {{ div | safe }}
     {% endfor %}
-
-    <a href="{{ url_for('home') }}">← Voltar ao menu</a>
 </body>
 </html>

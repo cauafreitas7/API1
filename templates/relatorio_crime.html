@@ -19,27 +19,6 @@
             {% for col in colunas %}
                 <th>{{ col }}</th>
             {% endfor %}
-        </tr><!DOCTYPE html>
-<html>
-<head>
-    <title>{{ titulo }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f2f2f2; }
-        h2 { color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; }
-        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-        th { background-color: #eee; }
-        .btn-export { margin-top: 15px; }
-    </style>
-</head>
-<body>
-    <h2>{{ titulo }}</h2>
-    
-    <table>
-        <tr>
-            {% for col in colunas %}
-                <th>{{ col }}</th>
-            {% endfor %}
         </tr>
         {% for linha in dados %}
             <tr>
@@ -49,22 +28,6 @@
             </tr>
         {% endfor %}
     </table>
-
-    <a class="btn-export" href="{{ url_for('exportar_relatorio_crime') }}">📥 Exportar CSV</a><br>
-    <a href="{{ url_for('home') }}">← Voltar</a>
-</body>
-</html>
-
-        {% for linha in dados %}
-            <tr>
-                {% for item in linha %}
-                    <td>{{ item }}</td>
-                {% endfor %}
-            </tr>
-        {% endfor %}
-    </table>
-
-    <a class="btn-export" href="{{ url_for('exportar_relatorio_crime') }}">📥 Exportar CSV</a><br>
     <a href="{{ url_for('home') }}">← Voltar</a>
 </body>
 </html>
