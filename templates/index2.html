@@ -1,13 +1,24 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-  
-<head> 
-    <title>Matplotlib Plot</title> 
-</head> 
-  
-<body> 
-    <h1>Conexão do Flask com Matplotlib</h1> 
-    <img src="static/images/plot1.png"> 
-</body> 
-  
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BI Completo</title>
+    <style>
+        body { font-family: Arial; margin: 20px; background: #f8f9fa; }
+        .grafico { margin-bottom: 40px; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
+        h2 { color: #333; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <h1>📊 Painel de Indicadores</h1>
+
+    {% for titulo, img in graficos %}
+        <div class="grafico">
+            <h2>{{ titulo }}</h2>
+            <img src="data:image/png;base64,{{ img }}" alt="{{ titulo }}">
+        </div>
+    {% endfor %}
+
+    <a href="{{ url_for('home') }}">← Voltar ao menu</a>
+</body>
 </html>
