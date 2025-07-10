@@ -1,24 +1,8 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block title %} Tabela Menu {% endblock %}
+{% block title %}Página Inicial{% endblock %}
 
 {% block content %}
-    <h2>Tabela Menu</h2>
-    <ul>
-        {% for menu, submenus in menus.items() %}
-            <li class="menu">{{ menu }}
-                {% if submenus %}
-                    <ul>
-                        {% for submenu, rota in submenus %}
-                            {% if rota != '#' %}
-                                <li class="submenu"><a href="{{ url_for(rota) }}">{{ submenu }}</a></li>
-                            {% else %}
-                                <li class="submenu">{{ submenu }} (em construção)</li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+<h1>Bem-vindo ao BI do SSPDS!</h1>
+<p>Essa é um trabalho da Extensão de Interface de Programação Aplicada</p>
 {% endblock %}

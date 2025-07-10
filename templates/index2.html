@@ -1,19 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8" />
-    <title>Dashboard</title>
-    <!-- Importa os scripts do Bokeh para o HTML -->
+    <meta charset="UTF-8">
+    <title>BI Interativo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.3.min.css" rel="stylesheet">
     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.3.min.js"></script>
-    <link href="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.3.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px 20px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: #34495e;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Dashboard Interativo com Bokeh</h1>
 
-    {% for titulo, script, div in graficos %}
-        <h3>{{ titulo }}</h3>
-        {{ script | safe }}
-        {{ div | safe }}
-    {% endfor %}
+    <h1>Dashboards de Segurança Pública - BI</h1>
+
+    <div class="grid-container">
+        {% for titulo, script, div in graficos %}
+            <div class="card">
+                <h2>{{ titulo }}</h2>
+                {{ script | safe }}
+                {{ div | safe }}
+            </div>
+        {% endfor %}
+    </div>
+
 </body>
 </html>

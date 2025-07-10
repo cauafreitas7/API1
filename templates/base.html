@@ -1,43 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}</title>
-    <style>
-        nav a {
-            color: #blue;
-            font-size: 1em;
-            margin-left: 50px;
-            text-decoration: none;
-        }
-
-        .book {
-            padding: 0px;
-            margin: 5px;
-            background-color: #f7f4f4;
-        }
-
-        .review {
-                margin-left: 50px;
-                font-size: 20px;
-        }
-        ul { list-style-type: none; padding: 0; }
-        .menu { font-weight: bold; margin-top: 15px; }
-        .submenu { margin-left: 20px; }
-        .submenu a { text-decoration: none; color: #333; }
-        .submenu a:hover { text-decoration: underline; }
-
-    </style>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Título padrão{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Importa Font Awesome no head -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <br>
 </head>
 <body>
-    <nav>
-        <a href="{{ url_for('home') }}" target="_blank">Home</a>
-        <a href="{{ url_for('dashboard_geral') }}" target="_blank">BI</a>
 
-    </nav>
-    <hr>
-    <div class="content">
-        {% block content %} {% endblock %}
-    </div>
+  <nav>
+    <ul class="menu_principal">
+      <!-- Link fixo para Home com ícone -->
+      <li class="menu">
+        <a href="{{ url_for(home_link[1]) }}">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </a>
+      </li>
+      
+      <!-- Menus dinâmicos -->
+      {% for menu, submenus in menus.items() %}
+        <li class="menu dropdown">
+          <a href="#" class="dropbtn">{{ menu }}</a>
+          <ul class="submenu">
+            {% for submenu, rota in submenus %}
+              {% if rota %}
+                <li><a href="{{ url_for(rota) }}">{{ submenu }}</a></li>
+              {% else %}
+                <li>{{ submenu }} (em construção)</li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+      {% endfor %}
+      <li class="menu" id="dark-mode-toggle" style="cursor:pointer; font-size: 22px; padding: 0 20px;">
+        <a>
+          <i class="fa-solid fa-moon"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dropdowns = document.querySelectorAll('.dropdown');
+
+      dropdowns.forEach(dropdown => {
+        const btn = dropdown.querySelector('.dropbtn');
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+
+          dropdowns.forEach(d => {
+            if (d !== dropdown) {
+              d.querySelector('.submenu').style.display = 'none';
+            }
+          });
+
+          const submenu = dropdown.querySelector('.submenu');
+          submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+        });
+      });
+
+      document.addEventListener('click', e => {
+        if (!e.target.closest('.dropdown')) {
+          dropdowns.forEach(d => {
+            d.querySelector('.submenu').style.display = 'none';
+          });
+        }
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Aplica modo escuro salvo, se existir
+      if (localStorage.getItem('modo-escuro') === 'true') {
+        document.body.classList.add('dark-mode');
+        const icon = document.getElementById('dark-mode-toggle').querySelector('i');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+
+      // Alternância do modo escuro
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+      darkModeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const icon = darkModeToggle.querySelector('i');
+        icon.classList.toggle('fa-moon');
+        icon.classList.toggle('fa-sun');
+
+        // Atualiza no localStorage
+        const modoEscuroAtivo = document.body.classList.contains('dark-mode');
+        localStorage.setItem('modo-escuro', modoEscuroAtivo);
+      });
+    });
+
+  </script>
 </body>
 </html>
