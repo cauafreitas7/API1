@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ titulo }}</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f2f2f2; }
-        h2 { color: #333; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; background-color: #fff; }
-        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
-        th { background-color: #eee; }
-        .btn-export { margin-top: 15px; }
-    </style>
-</head>
-<body>
-    <h2>{{ titulo }}</h2>
+{% extends "base.html" %}
+
+{% block title %}Relatório{% endblock %}
+
+{% block content %}
+<div class = 'relatorio-tabela'>
     
     <table>
         <tr>
@@ -35,8 +26,9 @@
 {% endfor %}
 
     </table>
-    <button onclick="window.location.href='{{ url_for('exportar_cidade') }}'">Exportar CSV</button>
-
-</body>
-</html>
+    <div class="botao-container">
+        <button onclick="window.location.href='{{ url_for('exportar_cidade')}}'", class="botao-exportar">Exportar CSV</button>
+    </div>
+    
+{% endblock %}
 

@@ -84,6 +84,8 @@ li a:hover {
 .img-centralizada {
   display: block;
   margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);  
 }
 
 /*Modo Escuro*/
@@ -91,6 +93,8 @@ li a:hover {
 body {
   background-color: #ecf0f1;;
   color: #2c3e50;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -180,3 +184,97 @@ body.dark-mode .submenu {
 .btn-submit:hover {
     background-color: #78bcad;
 }
+
+/* Estilo para tabelas de relatório */
+.relatorio-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #ecf0f1;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.relatorio-tabela th,
+.relatorio-tabela td {
+  border: 1px solid #bdc3c7;
+  padding: 10px;
+  text-align: left;
+}
+
+.relatorio-tabela th {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.relatorio-tabela tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Modo escuro */
+body.dark-mode .relatorio-tabela {
+  background-color: #2c3e50;
+}
+
+body.dark-mode .relatorio-tabela th {
+  background-color: #4d647b;;
+  color: #ecf0f1;
+}
+
+body.dark-mode .relatorio-tabela td {
+  color: #ecf0f1;
+  border-color: #555;
+}
+
+body.dark-mode .relatorio-tabela tr:nth-child(even) {
+  background-color: #ecf0f165;
+}
+
+/* Container para alinhar o botão à direita */
+.botao-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.botao-exportar {
+  background-color: #1abc9c;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.botao-exportar:hover {
+  background-color: #16a085;
+}
+
+/* Adaptação para modo escuro */
+body.dark-mode .botao-exportar {
+  background-color: #27ae60;
+  color: #ecf0f1;
+}
+
+body.dark-mode .botao-exportar:hover {
+  background-color: #229954;
+}
+
+/* Estilo para contorno arredondado dos gráficos */
+.grafico-bokeh {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+

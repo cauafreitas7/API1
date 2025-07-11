@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Criminosos Faccionados{% endblock %}
+{% block title %}Comparativo de Custos{% endblock %}
 
 {% block content %}
 <div class = 'grafico'>
-    <h2>{{ titulo }}</h2>
-    <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico Comparativo">
+    <img src="data:image/png;base64,{{ plot_url }}" alt="Gráfico Comparativo", class="img-centralizada">
 </div>
 {% endblock %}
